@@ -1,0 +1,17 @@
+version: "3"
+services:
+    dashmachine:
+        container_name: dashmachine
+        volumes:
+            - /srv/datastore/docker/dashmachine/user_data:/dashmachine/dashmachine/user_data
+#            - /srv/datastore/docker/dashmachine/config:/dashmachine/
+        restart: unless-stopped
+        image: rmountjoy/dashmachine:latest
+        networks: 
+          MyMacvlan:
+            ipv4_address: 10.10.20.201
+        
+networks:
+   MyMacvlan:
+    external: true
+    name: MyMacvlan
